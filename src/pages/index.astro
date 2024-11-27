@@ -1,16 +1,114 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import { motion } from 'framer-motion';
+import Timeline from '../components/Timeline';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Neil Taggart - Software Developer">
+	<main>
+		<!-- Hero Section -->
+		<section class="py-20 w-full">
+			<div class="w-full">
+				<motion.div
+					client:load
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8 }}
+					class="text-center"
+				>
+					<h1 class="font-heading text-5xl mb-6 text-primary">
+						Hello, I'm Neil Taggart
+					</h1>
+					<p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+						A passionate software developer focused on creating beautiful and functional web experiences.
+					</p>
+				</motion.div>
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section class="py-20 w-full">
+			<div class="w-full">
+				<motion.div
+					client:load
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+					class="max-w-3xl mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
+				>
+					<h2 class="font-heading text-3xl mb-6 text-primary">
+						About Me
+					</h2>
+					<div class="prose dark:prose-invert">
+						<p>
+							I'm a software developer with a passion for creating elegant solutions to complex problems.
+							My journey in software development has been driven by curiosity and a desire to build
+							meaningful applications that make a difference.
+						</p>
+						
+						<!-- Services Section -->
+						<div id="services" class="mt-12 scroll-mt-20">
+							<h3 class="font-heading text-2xl mb-6 text-primary">
+								Services I Offer
+							</h3>
+							<div class="grid gap-6 md:grid-cols-2">
+								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
+										Web Development
+									</h4>
+									<p class="text-gray-600 dark:text-gray-300">
+										Custom websites and web applications built with modern technologies and best practices.
+									</p>
+								</div>
+								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
+										Frontend Development
+									</h4>
+									<p class="text-gray-600 dark:text-gray-300">
+										Responsive and interactive user interfaces using React, Vue.js, and other modern frameworks.
+									</p>
+								</div>
+								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
+										Backend Development
+									</h4>
+									<p class="text-gray-600 dark:text-gray-300">
+										Scalable server-side solutions using Node.js, Python, and cloud technologies.
+									</p>
+								</div>
+								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
+										UI/UX Design
+									</h4>
+									<p class="text-gray-600 dark:text-gray-300">
+										User-centered design solutions that focus on aesthetics and usability.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</motion.div>
+			</div>
+		</section>
+
+		<!-- Timeline Section -->
+		<section class="py-20 w-full">
+			<div class="w-full">
+				<motion.div
+					client:load
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					transition={{ duration: 0.8 }}
+					viewport={{ once: true }}
+					class="bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
+				>
+					<h2 class="font-heading text-3xl mb-12 text-center text-primary">
+						My Journey
+					</h2>
+					<Timeline client:load />
+				</motion.div>
+			</div>
+		</section>
+	</main>
+</Layout>

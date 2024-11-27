@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { motion } from 'framer-motion';
+
+const posts = [
+  {
+    id: 1,
+    title: 'Hello World',
+    content: `
+# Hello World
+
+Welcome to my blog! This is my first post about my journey in software development.
+
+## My Journey
+
+I've always been passionate about technology and creating things. This blog will be a place where I share my experiences, learnings, and thoughts about software development.
+
+## What to Expect
+
+In this blog, you'll find:
+- Technical tutorials and guides
+- Project showcases
+- Industry insights
+- Personal experiences and lessons learned
+
+Stay tuned for more content!
+    `,
+    date: '2024-01-15',
+    slug: 'hello-world',
+  },
+  // Add more blog posts here
+];
+
+const { slug } = Astro.params;
+const post = posts.find(p => p.slug === slug);
+
+if (!post) return Astro.redirect('/404');
+---
+
+<Layout title={`${post.title} - Neil Taggart's Blog`}>
+  <div class="min-h-screen w-full">
+    <section class="py-20 w-full">
+      <div class="w-full">
+        <motion.div
+          client:load
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          class="max-w-4xl mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
+        >
+          <a
+            href="/blog"
+            class="inline-block mb-8 text-primary hover:text-primary-dark transition-colors"
+          >
+            ← Back to Blog
+          </a>
+          
+          <article class="prose dark:prose-invert max-w-none">
+            <h1 class="font-heading text-4xl mb-4 text-primary">
+              {post.title}
+            </h1>
+            <time class="text-sm text-gray-500 dark:text-gray-400 mb-8 block">
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            
+            <div set:html={post.content} />
+          </article>
+        </motion.div>
+      </div>
+    </section>
+  </div>
+</Layout>

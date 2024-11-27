@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { motion } from 'framer-motion';
+import ContactForm from '../components/ContactForm';
+---
+
+<Layout title="Contact - Neil Taggart">
+  <div class="min-h-screen w-full">
+    <section class="py-20 w-full">
+      <div class="w-full">
+        <motion.div
+          client:load
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          class="max-w-2xl mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
+        >
+          <h1 class="font-heading text-4xl mb-8 text-primary">
+            Get in Touch
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">
+            Have a question or want to work together? Feel free to reach out!
+          </p>
+
+          <ContactForm client:load />
+        </motion.div>
+      </div>
+    </section>
+  </div>
+</Layout>

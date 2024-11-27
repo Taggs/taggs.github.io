@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { motion } from 'framer-motion';
+
+const posts = [
+  {
+    id: 1,
+    title: 'Hello World',
+    excerpt: 'Welcome to my blog! This is my first post about my journey in software development.',
+    date: '2024-01-15',
+    slug: 'hello-world',
+  },
+  // Add more blog posts here
+];
+---
+
+<Layout title="Blog - Neil Taggart">
+  <div class="min-h-screen w-full">
+    <section class="py-20 w-full">
+      <div class="w-full">
+        <motion.div
+          client:load
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          class="max-w-4xl mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
+        >
+          <h1 class="font-heading text-4xl mb-8 text-primary">
+            Blog
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">
+            Thoughts, ideas, and experiences from my journey in software development.
+          </p>
+
+          <div class="grid gap-8">
+            {posts.map((post) => (
+              <motion.article
+                key={post.id}
+                client:load
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <a href={`/blog/${post.slug}`}>
+                  <h2 class="font-heading text-2xl mb-4 text-primary hover:text-primary-dark transition-colors">
+                    {post.title}
+                  </h2>
+                </a>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  {post.excerpt}
+                </p>
+                <time class="text-sm text-gray-500 dark:text-gray-400">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  </div>
+</Layout>
