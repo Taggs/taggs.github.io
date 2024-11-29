@@ -11,6 +11,10 @@
   body {
     @apply antialiased;
   }
+
+  h3 {
+    @apply text-gray-800 dark:text-gray-600;
+  }
 }
 
 .font-heading {

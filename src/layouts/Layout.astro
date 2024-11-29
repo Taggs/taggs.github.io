@@ -1,5 +1,6 @@
 ---
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import '../styles/global.css';
 
 interface Props {
@@ -20,9 +21,12 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Aclonica&family=Aboreto&display=swap" rel="stylesheet">
 	</head>
-	<body class="min-h-screen bg-white dark:bg-dark text-gray-900 dark:text-gray-100">
+	<body class="min-h-screen bg-white dark:bg-dark text-gray-900 dark:text-gray-100 flex flex-col">
 		<Navbar client:load />
-		<slot />
+		<main class="px-5 flex-grow">
+			<slot />
+		</main>
+		<Footer client:load />
 	</body>
 </html>
 

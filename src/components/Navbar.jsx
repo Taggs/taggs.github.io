@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import ThemeToggle from './ThemeToggle'
+import BookingButton from './BookingButton'
 
 const navigation = [
-  { name: 'About', href: '/' },
+  { name: 'Home', href: '/' },
   { name: 'Services', href: '/#services' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -49,32 +50,35 @@ export default function Navbar() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="hidden lg:flex lg:gap-x-12 items-center">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary"
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
               >
                 {item.name}
               </a>
             ))}
+            <BookingButton />
+            <ThemeToggle />
           </div>
         </div>
       </nav>
 
       {/* Mobile menu */}
-      <div className="lg:hidden" role="dialog" aria-modal="true">
-        {/* Mobile menu, show/hide based on menu open state */}
-        <div
-          className={`${
-            mobileMenuOpen ? 'fixed' : 'hidden'
-          } inset-0 z-50`}
-        >
-          <div className="fixed inset-0 bg-black/30" aria-hidden="true" onClick={() => setMobileMenuOpen(false)} />
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
+          {/* Background overlay */}
+          <div 
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity" 
+            aria-hidden="true" 
+            onClick={() => setMobileMenuOpen(false)} 
+          />
           
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          {/* Menu panel */}
+          <div className="fixed inset-y-0 right-0 z-[101] w-full overflow-y-auto bg-white dark:bg-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
             <div className="flex items-center justify-between">
               <a href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <span className="text-2xl font-heading text-gray-900 dark:text-white">
@@ -107,11 +111,14 @@ export default function Navbar() {
                     </a>
                   ))}
                 </div>
+                <div className="py-6">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
