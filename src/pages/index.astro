@@ -3,27 +3,31 @@ import Layout from '../layouts/Layout.astro';
 import { motion } from 'framer-motion';
 import Timeline from '../components/Timeline';
 import HeroImage from '../components/HeroImage';
+import LogoMarquee from '../components/LogoMarquee.astro';
 ---
 
-<Layout title="Neil Taggart - Software Developer">
+<Layout title="Neil Taggart - Adaptive Technologist">
 	<main>
 		<!-- Hero Section -->
-		<section class="py-20 w-full">
-			<div class="w-full max-w-6xl mx-auto">
+		<section class="py-20 w-full bg-gradient-to-b from-primary/10 to-transparent">
+			<div class="w-full max-w-6xl mx-auto px-4">
 				<div class="flex flex-col md:flex-row items-center justify-between gap-12">
 					<motion.div
 						client:load
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8 }}
-						class="text-center md:text-left flex-1"
+						className="text-center md:text-left flex-1"
 					>
 						<h1 class="font-heading text-5xl mb-6 text-primary">
-							Hello, I'm Neil Taggart
+							Adapt faster with Neil's leadership and CTPO expertise.
 						</h1>
-						<p class="text-xl text-gray-600 dark:text-gray-300">
-							A passionate software developer focused on creating beautiful and functional web experiences.
+						<p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+							While technology tools are getting easier, technology choices are getting harder. The pace of change is accelerating. I'm here to help you adapt your people, processes and technology to these changes.
 						</p>
+						<a href="https://calendar.app.google/cp5DNAedjUSDNfG77" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors">
+							Book a 45 minute call
+						</a>
 					</motion.div>
 					
 					<div class="flex-shrink-0">
@@ -33,88 +37,86 @@ import HeroImage from '../components/HeroImage';
 			</div>
 		</section>
 
-		<!-- About Section -->
-		<section class="py-20 w-full">
-			<div class="w-full">
-				<motion.div
-					client:load
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					class="max-w-3xl mx-auto bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
-				>
-					<h2 class="font-heading text-3xl mb-6 text-primary">
-						About Me
-					</h2>
-					<div class="prose dark:prose-invert">
-						<p>
-							I'm a software developer with a passion for creating elegant solutions to complex problems.
-							My journey in software development has been driven by curiosity and a desire to build
-							meaningful applications that make a difference.
+		<!-- How I Help Section -->
+		<section class="py-16 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-heading text-center mb-12 text-primary">How I Help Organizations Adapt</h2>
+				<div class="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
+					<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+						<h4 class="font-heading text-lg mb-3 text-primary">
+							<span class="underline">The WHAT & WHY</span>: Technology Strategy Formulation and Review
+						</h4>
+						<p class="text-gray-600 dark:text-gray-300">
+							If you have a strategic aim, let's validate it. If you don't, let's build one.
 						</p>
-						
-						<!-- Services Section -->
-						<div id="services" class="mt-12 scroll-mt-20">
-							<h3 class="font-heading text-2xl mb-6 text-primary">
-								Services I Offer
-							</h3>
-							<div class="grid gap-6 md:grid-cols-2">
-								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
-									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
-										Web Development
-									</h4>
-									<p class="text-gray-600 dark:text-gray-300">
-										Custom websites and web applications built with modern technologies and best practices.
-									</p>
-								</div>
-								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
-									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
-										Frontend Development
-									</h4>
-									<p class="text-gray-600 dark:text-gray-300">
-										Responsive and interactive user interfaces using React, Vue.js, and other modern frameworks.
-									</p>
-								</div>
-								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
-									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
-										Backend Development
-									</h4>
-									<p class="text-gray-600 dark:text-gray-300">
-										Scalable server-side solutions using Node.js, Python, and cloud technologies.
-									</p>
-								</div>
-								<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
-									<h4 class="font-heading text-lg mb-3 text-gray-900 dark:text-white">
-										UI/UX Design
-									</h4>
-									<p class="text-gray-600 dark:text-gray-300">
-										User-centered design solutions that focus on aesthetics and usability.
-									</p>
-								</div>
-							</div>
-						</div>
 					</div>
-				</motion.div>
+					<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+						<h4 class="font-heading text-lg mb-3 text-primary">
+							<span class="underline">The HOW</span>: Operational Efficiency, Resilience and CyberSecurity
+						</h4>
+						<p class="text-gray-600 dark:text-gray-300">
+							Are the team doing the right things consistently? It's not always easy to tell, day-to-day. A fresh perspective can reveal useful optimisations as well as mitigate risks that routine had missed.
+						</p>
+					</div>
+					<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+						<h4 class="font-heading text-lg mb-3 text-primary">
+							<span class="underline">The WHO</span>: High Performance Team Building
+						</h4>
+						<p class="text-gray-600 dark:text-gray-300">
+							An engineering team is like an orchestra: the musicians may all have prodigious skills, but without a good conductor, they're not at full potential. I can assess the team, align the team and augment the team, where needed.
+						</p>
+					</div>
+					<div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-lg p-6">
+						<h4 class="font-heading text-lg mb-3 text-primary">
+							Unbiased, Objective, <span class="underline">ADAPTIVE</span>
+						</h4>
+						<p class="text-gray-600 dark:text-gray-300">
+							It's about what you need and the value I can bring. If I can't help directly, I probably know someone who can.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Logo Marquee -->
+		<LogoMarquee />
+
+		<!-- About Section -->
+		<section class="py-20 bg-gray-50/50 dark:bg-gray-800/50 backdrop-blur-sm">
+			<div class="container mx-auto px-4">
+				<div class="max-w-3xl mx-auto">
+					<h2 class="text-3xl font-heading mb-6 text-center text-primary">Why Work With Me?</h2>
+					<div class="prose dark:prose-invert mx-auto">
+						<p class="text-lg">
+							I'm a former developer and chief technology & product officer with a passion for making technology investments work. With the right people doing the right things, the technology should almost feel invisible. Technology should enhance your business performance and adaptability, not impede them. Having worked with global firms, as well as start-ups, I'm happy with dynamic, resource-constrained start-up environments, as well as corporate, regulated, diligent environments.
+						</p>
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<!-- Timeline Section -->
-		<section class="py-20 w-full">
-			<div class="w-full">
-				<motion.div
-					client:load
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					class="bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-lg p-8"
-				>
-					<h2 class="font-heading text-3xl mb-12 text-center text-primary">
+		<section class="py-32 w-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+			<div class="container mx-auto px-4">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="font-heading text-4xl mb-16 text-center text-primary">
 						My Journey
 					</h2>
 					<Timeline client:load />
-				</motion.div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Call to Action Section -->
+		<section class="py-20 bg-primary text-white">
+			<div class="container mx-auto px-4 text-center">
+				<h2 class="text-3xl font-heading mb-6">Ready to Adapt?</h2>
+				<p class="text-xl mb-8 max-w-2xl mx-auto">
+					Let's discuss how I can help your organization navigate technology challenges and build a more resilient future.
+				</p>
+				<a href="#contact" class="inline-block bg-white text-primary px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+					Schedule a Consultation
+				</a>
 			</div>
 		</section>
 	</main>

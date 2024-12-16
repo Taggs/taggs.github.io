@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 const timelineEvents = [
   {
@@ -24,26 +24,10 @@ export default function Timeline() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
   
-  // Track scroll position relative to the timeline container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
   });
-
-  // Smooth out the scroll progress
-  const smoothProgress = useSpring(scrollYProgress, {
-    damping: 20,
-    stiffness: 100
-  });
-
-  // Update active index based on scroll position
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange(value => {
-      const index = Math.floor(value * timelineEvents.length);
-      setActiveIndex(Math.min(index, timelineEvents.length - 1));
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
 
   return (
     <div ref={containerRef} className="relative container mx-auto px-4 py-16 min-h-[600px]">
@@ -52,18 +36,22 @@ export default function Timeline() {
 
       {/* Animated dot */}
       <motion.div
-        initial={{ y: 0 }}
-        style={{ 
-          y: useTransform(
-            smoothProgress,
-            [0, 1],
-            [0, "calc(100% - 32px)"] // Subtract dot height to prevent overflow
-          ),
+        className="absolute left-1/2 -translate-x-1/2"
+        animate={{
+          y: ["0%", "calc(100% - 40px)"]
         }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+        transition={{
+          duration: 1,
+          ease: "linear",
+          times: [0, 1],
+          repeat: 0
+        }}
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], ["0%", "calc(100% - 40px)"])
+        }}
       >
-        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-          <div className="w-4 h-4 rounded-full bg-primary animate-pulse" />
+        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shadow-lg">
+          <div className="w-5 h-5 rounded-full bg-primary shadow-inner animate-pulse" />
         </div>
       </motion.div>
 
@@ -71,7 +59,6 @@ export default function Timeline() {
       {timelineEvents.map((event, index) => (
         <motion.div
           key={event.year}
-          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.2 }}

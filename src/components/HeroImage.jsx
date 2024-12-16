@@ -6,28 +6,25 @@ export default function HeroImage() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative w-[300px] h-[400px]"
+      className="relative w-[300px] h-[300px]"
     >
-      {/* Curved rhombus frame */}
+      {/* Black background */}
+      <div className="absolute inset-0 bg-black rounded-full" />
+
+      {/* Green frame */}
       <div className="absolute inset-0">
         <div 
-          className="w-full h-full bg-primary"
-          style={{
-            clipPath: `path('M150 0 C150 0, 300 100, 300 200, 300 300, 150 400, 150 400, 150 400, 0 300, 0 200, 0 100, 150 0, 150 0Z')`
-          }}
+          className="w-full h-full bg-primary rounded-full border-4 border-primary"
         />
       </div>
       
-      {/* Image container with padding to show frame */}
+      {/* Image container with padding */}
       <div 
-        className="absolute inset-[3px]"
-        style={{
-          clipPath: `path('M150 4 C150 4, 296 102, 296 200, 296 298, 150 396, 150 396, 150 396, 4 298, 4 200, 4 102, 150 4, 150 4Z')`
-        }}
+        className="absolute inset-[4px] overflow-hidden rounded-full"
       >
         <img
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop"
-          alt="Portrait"
+          src="/images/neil-profile.png"
+          alt="Neil Taggart Portrait"
           className="w-full h-full object-cover"
         />
       </div>
