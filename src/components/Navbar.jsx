@@ -10,6 +10,13 @@ const navigation = [
   { name: 'Blog', href: '/blog' },
 ]
 
+const BRAND_NAME = "The Adaptive Technologist"
+
+const springAnimation = {
+  whileHover: { scale: 1.05 },
+  transition: { type: "spring", stiffness: 400, damping: 10 }
+}
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -17,29 +24,41 @@ export default function Navbar() {
     if (href.startsWith('/#')) {
       e.preventDefault()
       const elementId = href.substring(2)
-      const element = document.getElementById(elementId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
+      document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' })
       setMobileMenuOpen(false)
     }
   }
+
+  const NavLink = ({ href, name, className, onClick }) => (
+    <a
+      href={href}
+      onClick={(e) => {
+        handleNavClick(e, href)
+        onClick?.()
+      }}
+      className={className}
+    >
+      {name}
+    </a>
+  )
 
   return (
     <header className="bg-white/80 dark:bg-dark/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <nav className="w-full" aria-label="Global">
         <div className="flex items-center justify-between py-6">
+          {/* Brand */}
           <div className="flex lg:flex-1">
             <a href="/" className="flex items-center">
               <motion.span 
                 className="text-2xl font-heading text-gray-900 dark:text-white"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                {...springAnimation}
               >
-                Neil Taggart
+                {BRAND_NAME}
               </motion.span>
             </a>
           </div>
+
+          {/* Mobile menu button */}
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -50,16 +69,15 @@ export default function Navbar() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
+
+          {/* Desktop navigation */}
           <div className="hidden lg:flex lg:gap-x-12 items-center">
             {navigation.map((item) => (
-              <a
+              <NavLink
                 key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
+                {...item}
                 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
-              >
-                {item.name}
-              </a>
+              />
             ))}
             <BookingButton />
             <ThemeToggle />
@@ -82,7 +100,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
               <a href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <span className="text-2xl font-heading text-gray-900 dark:text-white">
-                  Neil Taggart
+                  {BRAND_NAME}
                 </span>
               </a>
               <button
@@ -98,17 +116,12 @@ export default function Navbar() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
+                    <NavLink
                       key={item.name}
-                      href={item.href}
-                      onClick={(e) => {
-                        handleNavClick(e, item.href)
-                        setMobileMenuOpen(false)
-                      }}
+                      {...item}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
-                    >
-                      {item.name}
-                    </a>
+                    />
                   ))}
                 </div>
                 <div className="py-6">
