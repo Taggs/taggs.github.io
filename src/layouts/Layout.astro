@@ -15,11 +15,6 @@ const META = {
   fonts: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Aclonica&family=Aboreto&display=swap",
 };
 
-const THEME = {
-  accent: "74, 214, 146",
-  accentLight: "101, 219, 166",
-  accentDark: "53, 184, 124",
-};
 ---
 
 <!doctype html>
@@ -44,9 +39,9 @@ const THEME = {
 
 <style is:global>
   :root {
-    --accent: {THEME.accent};
-    --accent-light: {THEME.accentLight};
-    --accent-dark: {THEME.accentDark};
+    --accent: 74, 214, 146;
+    --accent-light: 101, 219, 166;
+    --accent-dark: 53, 184, 124;
     --accent-gradient: linear-gradient(
       45deg,
       rgb(var(--accent)),

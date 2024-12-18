@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import styles from './LogoCallout.module.css';
 
 interface Company {
   name: string;
@@ -28,23 +28,6 @@ export default function LogoCallout({ companies }: LogoCalloutProps) {
 
   return (
     <>
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .marquee-scroll {
-          animation: marquee 30s linear infinite;
-        }
-        .marquee-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-
       <div className="relative">
         {/* Gradient overlays */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-primary/10 dark:from-primary/20 to-transparent z-10" />
@@ -52,26 +35,30 @@ export default function LogoCallout({ companies }: LogoCalloutProps) {
 
         {/* Marquee content */}
         <div 
-          className={`flex gap-8 whitespace-nowrap ${isPaused ? '' : 'marquee-scroll'}`}
-          style={{ width: 'fit-content' }}
+          className={styles['logo-scroll-container']}
         >
-          {[...companies, ...companies].map((company, index) => (
-            <div
-              key={`${company.name}-${index}`}
-              className="inline-flex flex-shrink-0 w-32 h-16 items-center justify-center"
-            >
-              <img
-                src={company.logo}
-                alt={`${company.name} logo`}
-                className={`w-auto opacity-75 hover:opacity-100 transition-all duration-500 ease-in-out hover:scale-110 cursor-pointer ${
-                  company.logo.includes('figtree-logo') || company.logo.includes('harris-paints-logo')
-                    ? 'h-10'
-                    : 'h-8'
-                }`}
-                onClick={() => handleLogoClick(company)}
-              />
-            </div>
-          ))}
+          <div 
+            className={`${styles['logo-scroll']} ${isPaused ? styles.paused : ''}`}
+            style={{ width: 'fit-content' }}
+          >
+            {[...companies, ...companies].map((company, index) => (
+              <div
+                key={`${company.name}-${index}`}
+                className="inline-flex flex-shrink-0 w-32 h-16 items-center justify-center"
+              >
+                <img
+                  src={company.logo}
+                  alt={`${company.name} logo`}
+                  className={`w-auto opacity-75 hover:opacity-100 transition-all duration-500 ease-in-out hover:scale-110 cursor-pointer ${
+                    company.logo.includes('figtree-logo') || company.logo.includes('harris-paints-logo')
+                      ? 'h-10'
+                      : 'h-8'
+                  }`}
+                  onClick={() => handleLogoClick(company)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Callout Box */}

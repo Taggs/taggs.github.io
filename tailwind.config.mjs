@@ -36,7 +36,7 @@ export default {
           lighter: '#1e1e1e',
         },
       },
-      typography: (theme) => ({
+      typography: {
         DEFAULT: {
           css: {
             fontSize: '18px',
@@ -60,7 +60,7 @@ export default {
             },
           },
         },
-      }),
+      },
       backgroundColor: {
         dark: '#121212',
       },
