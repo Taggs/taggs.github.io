@@ -7,5 +7,5 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   site: 'https://taggy.github.io',
-  base: 'taggs.github.io',
+//  base: 'taggs.github.io',
 });
