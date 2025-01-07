@@ -6,7 +6,6 @@ import BookingButton from './BookingButton'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/#services' },
   { name: 'Blog', href: '/blog' },
 ]
 

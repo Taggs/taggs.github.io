@@ -29,12 +29,6 @@ const TIMELINE_DATA: TimelineItem[] = [
   }
 ];
 
-const OBSERVER_OPTIONS = {
-  root: null,
-  rootMargin: '-45% 0px -45% 0px',
-  threshold: 0
-};
-
 export default function Timeline() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const timelineRef = useRef<HTMLDivElement | null>(null);
@@ -43,36 +37,49 @@ export default function Timeline() {
 
   const updateDotPosition = (index: number) => {
     if (!dotRef.current || !timelineRef.current) return;
-    
-    const timelineHeight = timelineRef.current.offsetHeight - 40; // Subtract dot height
-    const position = (index / (TIMELINE_DATA.length - 1)) * timelineHeight;
-    dotRef.current.style.transform = `translateY(${position}px)`;
+    const timelineRect = timelineRef.current.getBoundingClientRect();
+    const currentItem = itemRefs.current[index];
+    if (!currentItem) return;
+
+    const itemRect = currentItem.getBoundingClientRect();
+    const relativePosition = itemRect.top - timelineRect.top;
+    dotRef.current.style.transform = `translateY(${relativePosition}px) translateX(-50%)`;
+  };
+
+  const handleScroll = () => {
+    if (!timelineRef.current) return;
+    const timelineRect = timelineRef.current.getBoundingClientRect();
+    const viewportMiddle = window.innerHeight / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    itemRefs.current.forEach((item, index) => {
+      if (!item) return;
+      const itemRect = item.getBoundingClientRect();
+      const itemMiddle = itemRect.top + (itemRect.height / 2);
+      const distance = Math.abs(itemMiddle - viewportMiddle);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveIndex(closestIndex);
+    updateDotPosition(closestIndex);
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = itemRefs.current.findIndex(ref => ref === entry.target);
-          if (index !== -1) {
-            setActiveIndex(index);
-            updateDotPosition(index);
-          }
-        }
-      });
-    }, OBSERVER_OPTIONS);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial position
 
-    itemRefs.current.forEach(ref => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const TimelineItem = ({ item, index }: { item: TimelineItem; index: number }) => {
-    const isEven = index % 2 === 0;
-    const yearClasses = `w-32 text-right ${isEven ? 'pr-8' : 'pl-8 text-right'}`;
-    const contentClasses = `w-1/2 ${isEven ? 'pr-12' : 'pl-12'}`;
     const cardClasses = `
       bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm 
       rounded-lg p-6 shadow-lg transition-all duration-300
@@ -84,20 +91,20 @@ export default function Timeline() {
         ref={el => itemRefs.current[index] = el}
         className="mb-24 last:mb-0"
       >
-        <div className={`flex items-center justify-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-          {/* Year marker */}
-          <div className={yearClasses}>
-            <span className="text-xl font-bold text-primary">
+        <div className="flex items-start justify-center gap-8">
+          {/* Left side: Year and Title */}
+          <div className="w-60 text-right">
+            <span className="text-xl font-bold text-primary block mb-2">
               {item.year}
             </span>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+              {item.title}
+            </h3>
           </div>
 
-          {/* Content */}
-          <div className={contentClasses}>
+          {/* Right side: Description */}
+          <div className="w-1/2">
             <div className={cardClasses}>
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                {item.title}
-              </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 {item.description}
               </p>
