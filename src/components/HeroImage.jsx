@@ -9,7 +9,7 @@ const ANIMATION_CONFIG = {
 const IMAGE_PROPS = {
   src: '/images/neil-profile.png',
   alt: 'Neil Taggart Portrait',
-  size: 300,
+  size: 350,
 };
 
 // Simplified cloud path - scaled up by 5.76x (was 57.6x)
@@ -19,36 +19,25 @@ export default function HeroImage() {
   return (
     <motion.div
       {...ANIMATION_CONFIG}
-      className="relative w-[400px] h-[400px] -mt-8"
+      className="relative w-[460px] h-[400px] -mt-8"
     >
       <svg 
-        viewBox="0 0 3000 2500" 
+        viewBox="0 0 450 450" 
         className="w-full h-full"
       >
-        {/* ViewBox outline */}
-        <rect
-          x="0"
-          y="0"
-          width="3000"
-          height="2500"
-          fill="none"
-          stroke="blue"
-          strokeWidth="1"
-        />
-
         <defs>
           <clipPath id="cloudClip">
-            <path d={CLOUD_PATH} transform="translate(800, 200) scale(8)" />
+            <path d={CLOUD_PATH} transform="translate(0, 0) scale(2.1)" />
           </clipPath>
         </defs>
 
         {/* Clipped image */}
         <image
           href={IMAGE_PROPS.src}
-          width="1800"
-          height="1800"
-          x="350"
-          y="350"
+          width="300"
+          height="300"
+          x="60"
+          y="80"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#cloudClip)"
         />
@@ -56,10 +45,10 @@ export default function HeroImage() {
         {/* Single outline */}
         <path
           d={CLOUD_PATH}
-          transform="translate(800, 200) scale(8)"
+          transform="translate(0, 0) scale(2.1)"
           fill="none"
           className="stroke-primary"
-          strokeWidth="3"
+          strokeWidth="1.5"
         />
       </svg>
     </motion.div>
