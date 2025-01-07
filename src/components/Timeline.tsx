@@ -8,29 +8,24 @@ interface TimelineItem {
 
 const TIMELINE_DATA: TimelineItem[] = [
   {
-    year: '2023',
-    title: 'CTPO Consultant',
-    description: 'Helping organizations adapt to technological change through strategic consulting and interim leadership roles.'
+    year: 'Co-founder',
+    title: 'Tele-medicine startup',
+    description: 'Bootstrapping the company with a website plugging into various healthcare platforms. Launched in 5 months.'
   },
   {
-    year: '2020',
-    title: 'Chief Technology & Product Officer',
-    description: 'Led digital transformation initiatives and product development for a rapidly growing fintech company.'
+    year: 'Tech function assessment',
+    title: 'Advising scale-up business on readiness.',
+    description: 'An established telemedicine business was scaling up and the CEO needed an external assessment of the technology function to ensure it had what it needed to scale effectively and safely. There was a 3-month assessment of systems and people, and I reported findings back to the founders. They recently sold half the business to private equity, after successfully scaling to meet NHS requirements.'
   },
   {
-    year: '2018',
-    title: 'Head of Engineering',
-    description: 'Scaled engineering teams and established robust development practices across multiple product lines.'
+    year: 'Fractional CTO',
+    title: 'Building a multi-family office',
+    description: 'Employee #5 at this financial services startup. Established information architecture and procedures, including security and data governance. Ran selection for, and deployment of, a portfolio management system, migrating from the old reporting system. Established solid partnerships with vendors to ensure they continued to meet our expectations as we scaled the business.'
   },
   {
-    year: '2015',
-    title: 'Senior Software Architect',
-    description: 'Designed and implemented enterprise-scale solutions for major financial institutions.'
-  },
-  {
-    year: '2012',
-    title: 'Technical Lead',
-    description: 'Led development teams in delivering complex software solutions for the banking sector.'
+    year: 'Chief Technology and Product Officer',
+    title: 'Global Management Consultancy, sold to Fortune 1000 firm',
+    description: 'Led the technology function, which included outsourced IT, as well as including outsourced IT, development and support teams for 3 core SaaS products, including mobile apps. Helped the CEO scale and sell the business.'
   }
 ];
 
