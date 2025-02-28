@@ -1,11 +1,11 @@
 ---
 title: "Your Post Title"
 description: "A brief description of your post"
-pubDate: "YYYY-MM-DD"
+pubDate: 2025-02-28  # Update this to your desired publication date
 author: "Neil Taggart"
 image: 
-    url: ""  # Add your featured image URL here
-    alt: ""  # Add image description here
+    url: "/images/neil-profile.png"  # Using an existing image as placeholder
+    alt: "Featured image"
 tags: ["tag1", "tag2"]  # Add relevant tags
 draft: true  # Set to false when ready to publish
 ---
@@ -31,8 +31,8 @@ console.log(example);
 ```
 
 ### Second Section
-- Add images:
-  ![Image description](image-url.jpg)
+- Add images using the public directory:
+  ![Example image](/images/neil-profile.png)
 
 - Create lists:
   1. First point
@@ -49,4 +49,4 @@ console.log(example);
 Wrap up your post with a strong conclusion.
 
 ---
-*Last updated: [current date]*
+*Last updated: 2025-02-28*

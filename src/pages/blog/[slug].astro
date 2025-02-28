@@ -1,35 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { motion } from 'framer-motion';
-
-export const posts = [
-  {
-    id: 1,
-    title: 'Hello World',
-    slug: 'hello-world',
-    content: `
-# Hello World
-
-Welcome to my blog! This is my first post about my journey in software development.
-
-## My Journey
-
-I've always been passionate about technology and creating things. This blog will be a place where I share my experiences, learnings, and thoughts about software development.
-
-## What to Expect
-
-In this blog, you'll find:
-- Technical tutorials and guides
-- Project showcases
-- Learning resources
-- Personal experiences
-`,
-    date: '2024-01-01',
-    excerpt: 'Welcome to my blog! This is my first post about my journey in software development.',
-  },
-];
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
+  const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -37,10 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-
+const { Content } = await post.render();
 ---
 
-<Layout title={`${post.title} - Neil Taggart's Blog`}>
+<Layout title={`${post.data.title} - Neil's Musings`}>
   <div class="min-h-screen w-full">
     <section class="py-20 w-full">
       <div class="w-full">
@@ -53,27 +28,81 @@ const { post } = Astro.props;
         >
           <a
             href="/blog"
-            class="inline-block mb-8 text-primary hover:text-primary-dark transition-colors"
+            class="inline-flex items-center text-primary hover:text-primary-dark mb-8 transition-colors"
           >
-            ← Back to Blog
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Back to Blog
           </a>
-          
-          <article class="prose dark:prose-invert max-w-none">
-            <h1 class="font-heading text-4xl mb-4 text-primary">
-              {post.title}
-            </h1>
-            <time class="text-sm text-gray-500 dark:text-gray-400 mb-8 block">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            
-            <div set:html={post.content} />
+
+          <article class="prose prose-lg dark:prose-invert max-w-none">
+            <header class="mb-8 not-prose">
+              <h1 class="font-heading text-4xl mb-4 text-primary">{post.data.title}</h1>
+              <div class="flex flex-wrap gap-4 items-center text-gray-600 dark:text-gray-400">
+                <time datetime={post.data.pubDate}>
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                {post.data.tags && (
+                  <div class="flex flex-wrap gap-2">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </header>
+
+            {post.data.image && (
+              <img
+                src={post.data.image.url}
+                alt={post.data.image.alt}
+                class="w-full h-auto rounded-lg mb-8 not-prose"
+              />
+            )}
+
+            <Content />
           </article>
         </motion.div>
       </div>
     </section>
   </div>
 </Layout>
+
+<style>
+  /* Custom styling for code blocks */
+  :global(pre) {
+    @apply bg-gray-900 dark:bg-black/50 rounded-lg p-4 overflow-x-auto;
+  }
+
+  /* Custom styling for inline code */
+  :global(code:not(pre code)) {
+    @apply bg-gray-200 dark:bg-gray-800 rounded px-1.5 py-0.5;
+  }
+
+  /* Custom styling for blockquotes */
+  :global(blockquote) {
+    @apply border-l-4 border-primary pl-4 italic;
+  }
+
+  /* Custom styling for links */
+  :global(a) {
+    @apply text-primary hover:text-primary-dark transition-colors;
+  }
+</style>
