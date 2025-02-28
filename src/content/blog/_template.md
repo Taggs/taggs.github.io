@@ -1,13 +1,13 @@
 ---
-title: "Your Post Title"
-description: "A brief description of your post"
-pubDate: 2025-02-28  # Update this to your desired publication date
-author: "Neil Taggart"
-image: 
-    url: "/images/neil-profile.png"  # Using an existing image as placeholder
-    alt: "Featured image"
-tags: ["tag1", "tag2"]  # Add relevant tags
-draft: true  # Set to false when ready to publish
+title: "Your Post Title"          # Required: The title of your blog post
+description: "A brief description of your post"    # Required: A brief summary of the post
+pubDate: 2025-02-28              # Required: Publication date (YYYY-MM-DD format)
+author: "Neil"            # Optional: Defaults to "Neil Taggart"
+image:                           # Optional: Featured image
+    url: "/images/neil-profile.png" # Path to image in public directory
+    alt: "Featured image"      # Accessibility description
+tags: ["tag1", "tag2"]           # Optional: Array of tags
+draft: true                      # Optional: Set to true to hide from production
 ---
 
 ## Introduction
