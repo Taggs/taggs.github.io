@@ -11,5 +11,5 @@ Reminder of the structure:
 │       └── index.astro
 └── package.json
 ```
-#toDo Connect the /blog folder to the Writing/blog folder in my Obsidian vault with the Enveloppe extension.
+#toDo Connect the /blog folder to the Writing/blog folder in my Obsidian vault with the Enveloppe extension. Connection established, and reports that note is uploaded, but where to...?
 
