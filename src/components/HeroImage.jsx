@@ -27,17 +27,17 @@ export default function HeroImage() {
       >
         <defs>
           <clipPath id="cloudClip">
-            <path d={CLOUD_PATH} transform="translate(0, 0) scale(2.1)" />
+            <path d={CLOUD_PATH} transform="translate(21.775, -3.63) scale(2.01613)" />
           </clipPath>
         </defs>
 
         {/* Clipped image */}
         <image
           href={IMAGE_PROPS.src}
-          width="300"
-          height="300"
-          x="60"
-          y="80"
+          width="268.57"
+          height="268.57"
+          x="90.715"
+          y="90.715"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#cloudClip)"
         />
@@ -45,7 +45,7 @@ export default function HeroImage() {
         {/* Single outline */}
         <path
           d={CLOUD_PATH}
-          transform="translate(0, 0) scale(2.1)"
+          transform="translate(21.775, -3.63) scale(2.01613)"
           fill="none"
           className="stroke-primary"
           strokeWidth="1.5"
