@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Timeline from "../components/Timeline";
 import HeroImage from "../components/HeroImage";
 import LogoMarquee from "../components/LogoMarquee.astro";
+import ConsultationButton from "../components/ConsultationButton.jsx";
 ---
 
 <Layout title="Neil Taggart - Adaptive Technologist">
@@ -189,12 +190,7 @@ import LogoMarquee from "../components/LogoMarquee.astro";
           Let's discuss how I can help your organization navigate technology
           challenges and build a more resilient future.
         </p>
-        <a
-          href="#contact"
-          class="inline-block bg-white text-primary px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-        >
-          Schedule a Consultation
-        </a>
+        <ConsultationButton client:load />
       </div>
     </section>
   </main>

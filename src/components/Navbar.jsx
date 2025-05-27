@@ -6,7 +6,7 @@ import BookingButton from './BookingButton'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Blog', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
 const BRAND_NAME = "The Adaptive Technologist"
@@ -28,7 +28,7 @@ export default function Navbar() {
     }
   }
 
-  const NavLink = ({ href, name, className, onClick }) => (
+  const NavLink = ({ href, name, className, onClick, ...rest }) => (
     <a
       href={href}
       onClick={(e) => {
@@ -36,6 +36,7 @@ export default function Navbar() {
         onClick?.()
       }}
       className={className}
+      {...rest}
     >
       {name}
     </a>
