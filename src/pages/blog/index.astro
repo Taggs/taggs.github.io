@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { getCollection } from 'astro:content';
 
 // Get all blog posts and sort them by date
-const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Layout title="Neil's Musings">
@@ -31,7 +33,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
             >
             <div class="flex gap-4">
               <a
-                href="https://taggs.substack.com/"
+                href="https://heuristix.substack.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"

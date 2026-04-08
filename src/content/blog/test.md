@@ -7,6 +7,7 @@ image:
     url: "/images/neil-profile.png"
     alt: "Neil Taggart"
 tags: ["markdown", "features", "blog"]
+draft: true
 ---
 
 Welcome to my new blog! This post demonstrates the various formatting capabilities and features available in my Markdown-powered blog. I'll be using this space to share my thoughts on software development, leadership, and technology.
