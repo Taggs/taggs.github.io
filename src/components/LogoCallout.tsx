@@ -50,7 +50,7 @@ export default function LogoCallout({ companies }: LogoCalloutProps) {
                   src={company.logo}
                   alt={`${company.name} logo`}
                   className={`w-auto opacity-75 hover:opacity-100 transition-all duration-500 ease-in-out hover:scale-110 cursor-pointer ${
-                    company.logo.includes('figtree-logo') || company.logo.includes('harris-paints-logo')
+                    company.logo.includes('figtree-logo') || company.logo.includes('harris-paints-logo') || company.logo.includes('Anthropic_Symbol') || company.logo.includes('BlueHat_logo') || company.logo.includes('verihome')
                       ? 'h-10'
                       : 'h-8'
                   }`}
