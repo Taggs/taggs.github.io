@@ -78,7 +78,7 @@ const sortedPosts = allPosts
             {sortedPosts.map((post) => (
               <article class="bg-white/20 dark:bg-gray-900/20 rounded-lg p-6 hover:bg-white/30 dark:hover:bg-gray-900/30 transition-colors">
                 <h2 class="text-2xl font-heading mb-2">
-                  <a href={`/blog/${post.slug}`} class="hover:text-primary transition-colors">
+                  <a href={`/blog/${post.id}`} class="hover:text-primary transition-colors">
                     {post.data.title}
                   </a>
                 </h2>
