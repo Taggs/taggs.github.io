@@ -9,6 +9,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://taggy.github.io',
+  site: 'https://neiltaggart.me',
 //  base: 'taggs.github.io',
 });
