@@ -2,11 +2,11 @@ import { motion, MotionConfig } from 'framer-motion';
 import { LockClosedIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
 const ICONS = {
-  gauge: (
+  radar: (
     <>
-      <path d="M4 16a8 8 0 1 1 16 0" />
-      <path d="M12 16l4-5" />
-      <circle cx="12" cy="16" r="1.2" fill="currentColor" />
+      <path d="M12 3l8.56 6.22-3.27 10.06H6.71L3.44 9.22z" />
+      <path d="M12 12V3M12 12l8.56-2.78M12 12l5.29 7.28M12 12l-5.29 7.28M12 12L3.44 9.22" strokeOpacity="0.4" />
+      <path d="M12 5l4.76 5.45-1.23 6.4-5.29-2.42-3.95-4.28z" fill="currentColor" fillOpacity="0.25" />
     </>
   ),
   bird: (
@@ -48,10 +48,14 @@ const iconVariants = {
 function StatusBadge({ status, badge }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 px-2.5 py-0.5 font-mono text-[11px] text-gray-500 dark:text-gray-400">
-      {status === 'live' ? (
-        <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-      ) : (
+      {status === 'private' ? (
         <LockClosedIcon className="h-3 w-3" aria-hidden="true" />
+      ) : (
+        <span
+          className={`h-1.5 w-1.5 rounded-full bg-current animate-pulse-dot ${
+            status === 'live' ? 'text-primary' : 'text-orange-400'
+          }`}
+        />
       )}
       {badge}
     </span>

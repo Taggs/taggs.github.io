@@ -1,4 +1,4 @@
-export type ProjectStatus = 'live' | 'private';
+export type ProjectStatus = 'live' | 'percolating' | 'private';
 
 export interface Project {
   name: string;
@@ -11,7 +11,7 @@ export interface Project {
   badge: string;
   href?: string;
   extraLink?: { label: string; href: string };
-  icon: 'gauge' | 'bird' | 'globe' | 'candles';
+  icon: 'radar' | 'bird' | 'globe' | 'candles';
 }
 
 export const projects: Project[] = [
@@ -22,10 +22,10 @@ export const projects: Project[] = [
       'Gives every news article a credibility score, built by AI and refined by the community. Lives in your browser as a Chrome extension and on your phone as an iOS app.',
     aside: "Because 'trust me bro' isn't a source.",
     tags: ['TypeScript', 'React', 'AI'],
-    status: 'live',
-    badge: 'live',
+    status: 'percolating',
+    badge: 'percolating',
     href: 'https://truthscore.ai',
-    icon: 'gauge',
+    icon: 'radar',
   },
   {
     name: 'SkyHunter',
@@ -40,7 +40,8 @@ export const projects: Project[] = [
   },
   {
     name: 'earth-ss2',
-    tagline: 'Earth Screensaver 2.0.',
+    tagline:
+      'Remember the Economist screensaver in the 2000s? No? Just me then... This is my homage to it, built with Claude.',
     blurb:
       'An interactive 3D globe for your desktop, with a real day/night terminator, live weather and headlines from wherever you click.',
     aside: "Screensavers are coming back. I've decided.",
@@ -54,7 +55,7 @@ export const projects: Project[] = [
     name: 'Trading bot',
     tagline: 'Buy low, sell high, automate the regret.',
     blurb:
-      'Algorithmic strategies on Lumibot, backtested with honest slippage, then let loose on Alpaca and IBKR paper accounts.',
+      'Algorithmic strategies across crypto, equities and options, built on Lumibot, backtested with honest slippage, then let loose on Alpaca and IBKR paper accounts.',
     aside: 'Past performance is not indicative of anything, especially mine.',
     tags: ['Python', 'Lumibot', 'IBKR'],
     status: 'private',
