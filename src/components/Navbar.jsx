@@ -2,14 +2,18 @@ import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
-import BookingButton from './BookingButton'
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Blog', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Writing ↗', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
-const BRAND_NAME = "The Adaptive Technologist"
+const Brand = () => (
+  <span className="font-mono text-lg font-medium tracking-tight text-gray-900 dark:text-white">
+    neil<span className="text-primary">.</span>taggart
+    <span className="text-primary animate-blink">_</span>
+  </span>
+)
 
 const springAnimation = {
   whileHover: { scale: 1.05 },
@@ -44,16 +48,13 @@ export default function Navbar() {
 
   return (
     <header className="bg-white/80 dark:bg-dark/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-      <nav className="w-full" aria-label="Global">
-        <div className="flex items-center justify-between py-6">
+      <nav className="mx-auto w-full max-w-6xl px-5" aria-label="Global">
+        <div className="flex items-center justify-between py-4">
           {/* Brand */}
           <div className="flex lg:flex-1">
             <a href="/" className="flex items-center">
-              <motion.span 
-                className="text-2xl font-heading text-gray-900 dark:text-white"
-                {...springAnimation}
-              >
-                {BRAND_NAME}
+              <motion.span {...springAnimation}>
+                <Brand />
               </motion.span>
             </a>
           </div>
@@ -71,15 +72,14 @@ export default function Navbar() {
           </div>
 
           {/* Desktop navigation */}
-          <div className="hidden lg:flex lg:gap-x-12 items-center">
+          <div className="hidden lg:flex lg:gap-x-10 items-center">
             {navigation.map((item) => (
               <NavLink
                 key={item.name}
                 {...item}
-                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
+                className="font-mono text-sm leading-6 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
               />
             ))}
-            <BookingButton />
             <ThemeToggle />
           </div>
         </div>
@@ -99,9 +99,7 @@ export default function Navbar() {
           <div className="fixed inset-y-0 right-0 z-[101] w-full overflow-y-auto bg-white dark:bg-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 shadow-xl">
             <div className="flex items-center justify-between">
               <a href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                <span className="text-2xl font-heading text-gray-900 dark:text-white">
-                  {BRAND_NAME}
-                </span>
+                <Brand />
               </a>
               <button
                 type="button"

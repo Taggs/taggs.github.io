@@ -33,10 +33,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full py-6 mt-12 border-t border-gray-200 dark:border-gray-800">
-      <div className="container mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div className="text-sm text-gray-600 dark:text-gray-400">
-          &copy; Adaptive Consulting, {currentYear}
+    <footer className="w-full py-8 mt-12 border-t border-gray-200 dark:border-gray-800">
+      <div className="mx-auto max-w-6xl px-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="text-center sm:text-left">
+          <div className="text-sm text-gray-600 dark:text-gray-400">&copy; Neil Taggart {currentYear}</div>
+          <div className="mt-1 font-mono text-[11px] text-gray-400 dark:text-gray-500">
+            built with Astro, too much coffee and zero regrets
+          </div>
         </div>
         <div className="flex gap-4">
           {SOCIAL_LINKS.map(({ name, url, icon }) => (

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 
 const ANIMATION_CONFIG = {
   initial: { opacity: 0, scale: 0.9 },
@@ -17,9 +17,11 @@ const CLOUD_PATH = "M198 180c16.434 0 28.8-12.366 28.8-28.8s-12.366-32.4-28.8-32
 
 export default function HeroImage() {
   return (
+    <MotionConfig reducedMotion="user">
     <motion.div
       {...ANIMATION_CONFIG}
-      className="relative w-[460px] h-[400px] -mt-8"
+      whileHover={{ rotate: -2, scale: 1.02 }}
+      className="relative w-full max-w-[400px] aspect-[46/40]"
     >
       <svg 
         viewBox="0 0 450 450" 
@@ -52,5 +54,6 @@ export default function HeroImage() {
         />
       </svg>
     </motion.div>
+    </MotionConfig>
   );
 }
