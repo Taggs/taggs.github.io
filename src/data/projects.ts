@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     name: 'earth-ss2',
     tagline:
-      'Remember the Economist screensaver in the 2000s? No? Just me then... This is my homage to it, built with Claude over Christmas.',
+      'Remember the Economist screensaver in the 2000s? No? Just me then... This is my homage to it, built with Claude.',
     blurb:
       'An interactive 3D globe for your desktop, with a real day/night terminator, live weather and headlines from wherever you click.',
     aside: "Screensavers are coming back. I've decided.",
