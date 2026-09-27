@@ -4,17 +4,16 @@ import Footer from '../components/Footer';
 import '../styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
 }
 
-const { title } = Astro.props;
+const { title = "Neil Taggart: side projects & other mischief" } = Astro.props;
 
 const META = {
-  description: "Neil Taggart - Software Developer",
+  description: "Neil Taggart builds things he probably doesn't have time for: truthscore.ai, SkyHunter, an Earth screensaver and a trading bot.",
   favicon: "/favicon.svg",
-  fonts: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Aclonica&family=Aboreto&display=swap",
+  fonts: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap",
 };
-
 ---
 
 <!doctype html>
@@ -22,31 +21,34 @@ const META = {
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={META.description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href={META.favicon} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link href={META.fonts} rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={META.fonts} rel="stylesheet" />
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash
+      (() => {
+        let theme = null;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme === 'dark' || (!theme && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+      console.log(
+        '%c👋 Poking around in the console? Respect.%c\nThe source is at github.com/Taggs/taggs.github.io',
+        'color:#42d692;font:600 14px monospace',
+        'color:inherit;font:12px monospace'
+      );
+    </script>
   </head>
-  <body class="min-h-screen bg-white dark:bg-dark text-gray-900 dark:text-gray-100 flex flex-col">
+  <body class="min-h-screen bg-white dark:bg-dark text-gray-900 dark:text-gray-100 flex flex-col transition-colors duration-300">
     <Navbar client:load />
-    <main class="px-5 flex-grow">
+    <main class="flex-grow">
       <slot />
     </main>
     <Footer client:load />
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --accent: 74, 214, 146;
-    --accent-light: 101, 219, 166;
-    --accent-dark: 53, 184, 124;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-</style>
