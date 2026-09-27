@@ -5,7 +5,8 @@ import ThemeToggle from './ThemeToggle'
 
 const navigation = [
   { name: 'Building', href: '/#building' },
-  { name: 'Writing ↗', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
+  { name: 'Writing', href: '/#writing' },
+  { name: 'Pro ↗', href: 'https://adaptive-online.com', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
 const Brand = () => (
