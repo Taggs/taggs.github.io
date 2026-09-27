@@ -27,8 +27,9 @@
     50% { transform: translateY(-10px) rotate(-1deg); }
   }
   @keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 0 0 rgb(66 214 146 / 0.6); }
-    50% { box-shadow: 0 0 0 5px rgb(66 214 146 / 0); }
+    /* Uses currentColor so the dot's text colour sets the glow */
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 60%, transparent); }
+    50% { box-shadow: 0 0 0 5px transparent; }
   }
 }
 
