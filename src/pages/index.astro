@@ -16,13 +16,9 @@ import { projects } from "../data/projects";
         <h1 class="text-5xl font-bold tracking-tight md:text-6xl">
           Hi, I'm Neil.
           <span class="mt-2 block text-3xl font-medium text-gray-500 dark:text-gray-400 md:text-4xl">
-            I build things I probably don't have time for.
+            I'm a technologist: writing it and writing about it.
           </span>
         </h1>
-        <p class="mx-auto mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-300 md:mx-0">
-          Games about birds, a screensaver for a planet, a bot that trades on my behalf
-          and a tool that fact-checks the internet. Mostly after bedtime.
-        </p>
         <div class="mt-6 flex justify-center md:justify-start">
           <RotatingQuip client:load />
         </div>
@@ -31,7 +27,7 @@ import { projects } from "../data/projects";
             href="#projects"
             class="rounded-lg bg-primary px-6 py-3 font-medium text-dark transition hover:-translate-y-0.5 hover:bg-primary-light"
           >
-            See the projects
+            Pet projects <span class="font-mono text-xs opacity-70">(free)</span>
           </a>
           <a
             href="https://heuristix.substack.com"
@@ -39,9 +35,21 @@ import { projects } from "../data/projects";
             rel="noopener noreferrer"
             class="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-gray-700"
           >
-            Read Heuristix ↗
+            Writing <span class="font-mono text-xs opacity-60">(partly free)</span> ↗
+          </a>
+          <a
+            href="https://adaptive-online.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-gray-700"
+          >
+            Pro ↗
           </a>
         </div>
+        <p class="mx-auto mt-8 max-w-xl text-lg text-gray-600 dark:text-gray-300 md:mx-0">
+          Games about birds, a screensaver for a planet, a bot that trades on my behalf
+          and a tool that fact-checks the internet. Mostly after bedtime.
+        </p>
       </AnimatedSection>
 
       <div class="w-64 shrink-0 animate-float sm:w-80 md:w-[400px]">

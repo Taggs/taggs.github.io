@@ -11,7 +11,7 @@ export interface Project {
   badge: string;
   href?: string;
   extraLink?: { label: string; href: string };
-  icon: 'radar' | 'bird' | 'globe' | 'candles';
+  icon: 'radar' | 'bird' | 'globe' | 'candles' | 'apple' | 'quill';
 }
 
 export const projects: Project[] = [
@@ -61,5 +61,28 @@ export const projects: Project[] = [
     status: 'private',
     badge: 'NDA with myself',
     icon: 'candles',
+  },
+  {
+    name: 'The Media Nutritionist',
+    tagline: 'A balanced diet for your attention.',
+    blurb:
+      'A work-in-progress book and YouTube channel pushing back against misinformation and attention theft, while championing the media that actually feeds you.',
+    aside: 'Doomscrolling is not one of your five a day.',
+    tags: ['Book', 'YouTube', 'Newsletter'],
+    status: 'percolating',
+    badge: 'simmering',
+    href: 'https://www.medianutrition.cloud/',
+    icon: 'apple',
+  },
+  {
+    name: 'Credit & Credibility',
+    tagline: 'A novel. Yes, an actual one, with chapters.',
+    blurb:
+      'Fiction, for a change. Written in the gaps between everything else, one stubborn paragraph at a time.',
+    aside: 'Any resemblance to real persons is purely coincidental. Probably.',
+    tags: ['Fiction', 'Novel', 'Long-form'],
+    status: 'private',
+    badge: 'first draft',
+    icon: 'quill',
   },
 ];
