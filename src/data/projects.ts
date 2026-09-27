@@ -69,7 +69,7 @@ export const projects: Project[] = [
     section: 'building',
   },
   {
-    name: 'The Media Nutritionist',
+    name: 'Media Nutrition',
     tagline: 'A balanced diet for your attention.',
     blurb:
       'A work-in-progress book and YouTube channel pushing back against misinformation and attention theft, while championing the media that actually feeds you.',
