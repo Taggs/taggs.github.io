@@ -59,6 +59,13 @@ const iconVariants = {
   hover: { rotate: [0, -12, 10, -6, 0], transition: { duration: 0.6 } },
 };
 
+// Render **bold** segments in taglines
+function withBold(text) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 ? <strong key={i} className="font-semibold">{part}</strong> : part
+  );
+}
+
 function StatusBadge({ status, badge }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 px-2.5 py-0.5 font-mono text-[11px] text-gray-500 dark:text-gray-400">
@@ -116,7 +123,7 @@ export default function ProjectCard({ project, index = 0 }) {
             <ArrowUpRightIcon className="h-5 w-5 text-gray-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
           )}
         </h3>
-        <p className="mt-1 text-primary-dark dark:text-primary">{tagline}</p>
+        <p className="mt-1 text-primary-dark dark:text-primary">{withBold(tagline)}</p>
         <p className="mt-3 text-gray-600 dark:text-gray-300">{blurb}</p>
 
         <p className="mt-4 font-mono text-xs text-gray-400 dark:text-gray-500">

@@ -5,6 +5,9 @@ import HeroImage from "../components/HeroImage";
 import ProjectCard from "../components/ProjectCard";
 import RotatingQuip from "../components/RotatingQuip";
 import { projects } from "../data/projects";
+
+const building = projects.filter((p) => p.section === "building");
+const writing = projects.filter((p) => p.section === "writing");
 ---
 
 <Layout>
@@ -24,18 +27,16 @@ import { projects } from "../data/projects";
         </div>
         <div class="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
           <a
-            href="#projects"
+            href="#building"
             class="rounded-lg bg-primary px-6 py-3 font-medium text-dark transition hover:-translate-y-0.5 hover:bg-primary-light"
           >
-            Pet projects <span class="font-mono text-xs opacity-70">(free)</span>
+            Building
           </a>
           <a
-            href="https://heuristix.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#writing"
             class="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-gray-700"
           >
-            Writing <span class="font-mono text-xs opacity-60">(partly free)</span> ↗
+            Writing
           </a>
           <a
             href="https://adaptive-online.com"
@@ -58,11 +59,11 @@ import { projects } from "../data/projects";
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="scroll-mt-20 py-20">
+  <!-- Building -->
+  <section id="building" class="scroll-mt-20 py-20">
     <div class="mx-auto max-w-6xl px-5">
       <AnimatedSection client:load className="mb-12">
-        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/projects</p>
+        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/building</p>
         <h2 class="mt-2 text-4xl font-bold tracking-tight">Things I've been poking at</h2>
         <p class="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
           Some are live, some are private, one is currently a cube. All of them are
@@ -71,7 +72,7 @@ import { projects } from "../data/projects";
       </AnimatedSection>
 
       <div class="grid gap-6 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {building.map((project, index) => (
           <ProjectCard client:load project={project} index={index} />
         ))}
       </div>
@@ -79,9 +80,23 @@ import { projects } from "../data/projects";
   </section>
 
   <!-- Writing -->
-  <section class="pb-20">
+  <section id="writing" class="scroll-mt-20 pb-20">
     <div class="mx-auto max-w-6xl px-5">
-      <AnimatedSection client:load>
+      <AnimatedSection client:load className="mb-12">
+        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing</p>
+        <h2 class="mt-2 text-4xl font-bold tracking-tight">Words, in various lengths</h2>
+        <p class="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
+          A book, a novel and a newsletter. Turns out writing code was the gateway drug.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {writing.map((project, index) => (
+          <ProjectCard client:load project={project} index={index} />
+        ))}
+      </div>
+
+      <AnimatedSection client:load className="mt-6">
         <a
           href="https://heuristix.substack.com"
           target="_blank"
@@ -89,7 +104,7 @@ import { projects } from "../data/projects";
           class="group flex flex-col gap-6 rounded-2xl border border-gray-200 bg-gradient-to-br from-primary/10 via-transparent to-transparent p-8 transition-colors duration-300 hover:border-primary/60 dark:border-gray-800 md:flex-row md:items-center md:justify-between md:p-10"
         >
           <div>
-            <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing</p>
+            <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing/heuristix</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight">
               I think out loud at <span class="text-primary">Heuristix</span>.
             </h2>

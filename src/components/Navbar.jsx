@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
 
 const navigation = [
-  { name: 'Projects', href: '/#projects' },
+  { name: 'Building', href: '/#building' },
   { name: 'Writing ↗', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
