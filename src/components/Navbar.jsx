@@ -48,6 +48,7 @@ export default function Navbar() {
   )
 
   return (
+    <>
     <header className="bg-white/80 dark:bg-dark/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <nav className="mx-auto w-full max-w-6xl px-5" aria-label="Global">
         <div className="flex items-center justify-between py-4">
@@ -85,8 +86,10 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+    </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu: rendered outside <header>, whose backdrop-filter would
+          otherwise become the containing block and clip this fixed overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[100]" role="dialog" aria-modal="true">
           {/* Background overlay */}
@@ -131,6 +134,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 }
