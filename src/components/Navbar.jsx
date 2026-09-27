@@ -4,8 +4,9 @@ import { motion } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
 
 const navigation = [
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Writing ↗', href: 'https://heuristix.substack.com', target: '_blank', rel: 'noopener noreferrer' },
+  { name: 'Building', href: '/#building' },
+  { name: 'Writing', href: '/#writing' },
+  { name: 'Pro ↗', href: 'https://adaptive-online.com', target: '_blank', rel: 'noopener noreferrer' },
 ]
 
 const Brand = () => (

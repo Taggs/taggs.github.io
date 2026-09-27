@@ -21,6 +21,20 @@ const ICONS = {
       <path d="M3.5 12h17M12 3.5c2.5 2.5 3.5 5.5 3.5 8.5s-1 6-3.5 8.5c-2.5-2.5-3.5-5.5-3.5-8.5s1-6 3.5-8.5z" />
     </>
   ),
+  apple: (
+    <>
+      <path d="M12 7.5c-1.5-1-5-1.5-6.5 1.5S5 17 8 19.5c1.5 1.2 2.8.5 4 .5s2.5.7 4-.5c3-2.5 4-7.5 2.5-10.5S13.5 6.5 12 7.5z" />
+      <path d="M12 7.5c0-2 .5-3.5 2-4.5" />
+      <path d="M12.5 5c1.5-1.5 3.5-1.5 4.5-1-.5 1.5-2.5 2.5-4.5 1z" fill="currentColor" fillOpacity="0.25" />
+    </>
+  ),
+  quill: (
+    <>
+      <path d="M20 4c-6 0-11 4-13 11l-2 5" />
+      <path d="M20 4c0 5-3 9-8 10.5L7 15" />
+      <path d="M9.5 11.5l4-4" strokeOpacity="0.5" />
+    </>
+  ),
   candles: (
     <>
       <path d="M6 4v16M12 7v12M18 3v14" />
@@ -44,6 +58,13 @@ const cardVariants = {
 const iconVariants = {
   hover: { rotate: [0, -12, 10, -6, 0], transition: { duration: 0.6 } },
 };
+
+// Render **bold** segments in taglines
+function withBold(text) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 ? <strong key={i} className="font-semibold">{part}</strong> : part
+  );
+}
 
 function StatusBadge({ status, badge }) {
   return (
@@ -102,7 +123,7 @@ export default function ProjectCard({ project, index = 0 }) {
             <ArrowUpRightIcon className="h-5 w-5 text-gray-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
           )}
         </h3>
-        <p className="mt-1 text-primary-dark dark:text-primary">{tagline}</p>
+        <p className="mt-1 text-primary-dark dark:text-primary">{withBold(tagline)}</p>
         <p className="mt-3 text-gray-600 dark:text-gray-300">{blurb}</p>
 
         <p className="mt-4 font-mono text-xs text-gray-400 dark:text-gray-500">

@@ -5,43 +5,52 @@ import HeroImage from "../components/HeroImage";
 import ProjectCard from "../components/ProjectCard";
 import RotatingQuip from "../components/RotatingQuip";
 import { projects } from "../data/projects";
+
+const building = projects.filter((p) => p.section === "building");
+const writing = projects.filter((p) => p.section === "writing");
 ---
 
 <Layout>
   <!-- Hero -->
   <section class="relative overflow-hidden bg-gradient-to-b from-primary/10 to-transparent">
-    <div class="mx-auto flex max-w-6xl flex-col-reverse items-center gap-10 px-5 py-16 md:flex-row md:py-24">
+    <div class="mx-auto flex max-w-6xl flex-col-reverse items-center gap-10 px-5 pt-16 pb-6 md:flex-row md:pt-24 md:pb-8">
       <AnimatedSection client:load className="flex-1 text-center md:text-left">
         <p class="mb-4 font-mono text-sm text-primary-dark dark:text-primary">hello, world</p>
         <h1 class="text-5xl font-bold tracking-tight md:text-6xl">
           Hi, I'm Neil.
           <span class="mt-2 block text-3xl font-medium text-gray-500 dark:text-gray-400 md:text-4xl">
-            I build things I probably don't have time for.
+            I'm a technologist: writing it and writing about it.
           </span>
         </h1>
-        <p class="mx-auto mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-300 md:mx-0">
-          Games about birds, a screensaver for a planet, a bot that trades on my behalf
-          and a tool that fact-checks the internet. Mostly after bedtime.
-        </p>
         <div class="mt-6 flex justify-center md:justify-start">
           <RotatingQuip client:load />
         </div>
         <div class="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
           <a
-            href="#projects"
+            href="#building"
             class="rounded-lg bg-primary px-6 py-3 font-medium text-dark transition hover:-translate-y-0.5 hover:bg-primary-light"
           >
-            See the projects
+            Building
           </a>
           <a
-            href="https://heuristix.substack.com"
+            href="#writing"
+            class="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-gray-700"
+          >
+            Writing
+          </a>
+          <a
+            href="https://adaptive-online.com"
             target="_blank"
             rel="noopener noreferrer"
             class="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:-translate-y-0.5 hover:border-primary hover:text-primary dark:border-gray-700"
           >
-            Read Heuristix ↗
+            Pro ↗
           </a>
         </div>
+        <p class="mx-auto mt-8 max-w-xl text-lg text-gray-600 dark:text-gray-300 md:mx-0">
+          Games about birds, a screensaver for a planet, a bot that trades on my behalf
+          and a tool that fact-checks the internet. Mostly after bedtime.
+        </p>
       </AnimatedSection>
 
       <div class="w-64 shrink-0 animate-float sm:w-80 md:w-[400px]">
@@ -50,12 +59,12 @@ import { projects } from "../data/projects";
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="scroll-mt-20 py-20">
+  <!-- Building -->
+  <section id="building" class="scroll-mt-20 pt-10 pb-20">
     <div class="mx-auto max-w-6xl px-5">
       <AnimatedSection client:load className="mb-12">
-        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/projects</p>
-        <h2 class="mt-2 text-4xl font-bold tracking-tight">Things I've been poking at</h2>
+        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/building</p>
+        <h2 class="mt-2 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">Tokens: they write the code that I design and engineer.</h2>
         <p class="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
           Some are live, some are private, one is currently a cube. All of them are
           more fun than they have any right to be.
@@ -63,7 +72,7 @@ import { projects } from "../data/projects";
       </AnimatedSection>
 
       <div class="grid gap-6 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {building.map((project, index) => (
           <ProjectCard client:load project={project} index={index} />
         ))}
       </div>
@@ -71,9 +80,23 @@ import { projects } from "../data/projects";
   </section>
 
   <!-- Writing -->
-  <section class="pb-20">
+  <section id="writing" class="scroll-mt-20 pb-20">
     <div class="mx-auto max-w-6xl px-5">
-      <AnimatedSection client:load>
+      <AnimatedSection client:load className="mb-12">
+        <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing</p>
+        <h2 class="mt-2 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">Words: always my own, in various lengths, that Jeeves, my AI valet, assists me with.</h2>
+        <p class="mt-3 max-w-2xl text-gray-600 dark:text-gray-400">
+          A book, a novel and a newsletter. Turns out writing code was the gateway drug.
+        </p>
+      </AnimatedSection>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {writing.map((project, index) => (
+          <ProjectCard client:load project={project} index={index} />
+        ))}
+      </div>
+
+      <AnimatedSection client:load className="mt-6">
         <a
           href="https://heuristix.substack.com"
           target="_blank"
@@ -81,7 +104,7 @@ import { projects } from "../data/projects";
           class="group flex flex-col gap-6 rounded-2xl border border-gray-200 bg-gradient-to-br from-primary/10 via-transparent to-transparent p-8 transition-colors duration-300 hover:border-primary/60 dark:border-gray-800 md:flex-row md:items-center md:justify-between md:p-10"
         >
           <div>
-            <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing</p>
+            <p class="font-mono text-sm text-primary-dark dark:text-primary">~/writing/heuristix</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight">
               I think out loud at <span class="text-primary">Heuristix</span>.
             </h2>

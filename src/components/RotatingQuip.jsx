@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 
 const QUIPS = [
+  'writing code',
+  'writing article',
+  'writing novel',
+  'writing non-fiction',
   'side_projects > sleep',
   'status: tinkering',
   'git commit -m "definitely the last one"',
